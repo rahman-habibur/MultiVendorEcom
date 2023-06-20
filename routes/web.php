@@ -24,9 +24,19 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::controller(AdminController::class)->group(function(){
         Route::get('/admin/dashboard', 'admin_dashboard')->name('admin.dashboard');
+        Route::get('/admin/logout', 'admin_logout')->name('admin.logout');
+        Route::get('/admin/profile', 'admin_profile')->name('admin.profile');
+        
     });
 
 });
+
+// admin login no varify required 
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/login', 'admin_login')->name('admin.login');
+});
+
+
 
 // Vendor 
 Route::middleware(['auth', 'role:vendor'])->group(function(){
