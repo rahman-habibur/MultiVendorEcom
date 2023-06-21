@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('backend/admin')}}/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="{{asset('backend/admin')}}/assets/css/semi-dark.css" />
     <link rel="stylesheet" href="{{asset('backend/admin')}}/assets/css/header-colors.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Admin Dashboard</title>
 </head>
 
