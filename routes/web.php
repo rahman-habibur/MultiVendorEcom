@@ -17,15 +17,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// admin login no varify required 
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/login', 'admin_login')->name('admin.login');
+});
 
-
-// Admin 
+// Admin After Login
 Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::controller(AdminController::class)->group(function(){
         Route::get('/admin/dashboard', 'admin_dashboard')->name('admin.dashboard');
         Route::get('/admin/logout', 'admin_logout')->name('admin.logout');
-        
+
         // admin profile update 
         Route::get('/admin/profile', 'admin_profile')->name('admin.profile');
         Route::post('/admin/update', 'admin_update')->name('admin.update');
@@ -38,27 +41,37 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
 });
 
-// admin login no varify required 
-Route::controller(AdminController::class)->group(function(){
-    Route::get('/admin/login', 'admin_login')->name('admin.login');
+// vendor login no varify required 
+Route::controller(VendorController::class)->group(function(){
+    Route::get('/vendor/login', 'vendor_login')->name('vendor.login');
 });
-
-
 
 // Vendor 
 Route::middleware(['auth', 'role:vendor'])->group(function(){
 
     Route::controller(VendorController::class)->group(function(){
         Route::get('/vendor/dashboard', 'vendor_dashboard')->name('vendor.dashboard');
+        Route::get('/vendor/logout', 'vendor_logout')->name('vendor.logout');
+
+        // vendor profile update 
+        Route::get('/vendor/profile', 'vendor_profile')->name('vendor.profile');
+        Route::post('/vendor/update', 'vendor_update')->name('vendor.update');
+
+        // password update 
+        Route::get('/vendor/changes', 'vendor_changes')->name('vendor.changes');
+        Route::post('/vendor/changes/update', 'vendor_changes_update')->name('vendor.changes.update');
+        
     });
 
 });
+
 
 // User 
 Route::middleware(['auth', 'role: user'])->group(function(){
 
     Route::controller(UserController::class)->group(function(){
         Route::get('/user/dashboard', 'user_dashboard')->name('user.dashboard');
+        
     });
 
 });
