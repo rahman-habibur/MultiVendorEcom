@@ -370,7 +370,7 @@
                     <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item" href="{{admin.changes}}"><i class="bx bx-cog"></i><span>Change Password</span></a>
+                    <li><a class="dropdown-item" href="{{ route('admin.changes') }}"><i class="bx bx-cog"></i><span>Change Password</span></a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i
                                 class='bx bx-home-circle'></i><span>Dashboard</span></a>

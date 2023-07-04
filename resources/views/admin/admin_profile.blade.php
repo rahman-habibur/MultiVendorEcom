@@ -128,7 +128,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col-sm-12 text-center text-secondary">
-                                        <img src="" alt="" id="show_image" height="120" width="120">
+                                        <img src="{{ (!empty($adminData->photo)? url('backend/admin/uploads/'.$adminData->photo): url('backend/admin/avatar.png')) }}" alt="" name="show_image" id="show_image" height="120" width="120">
                                     </div>
                                 </div>
 
@@ -168,18 +168,18 @@
     </div>
 </div>
 
-<!-- for dynamic change jquery  -->
-<script type="text/javascript">
+{{-- For Dynamic Image Change jquery Code --}}
 
-    $(document).ready(function(){
-        #("#photo").change(function(e){
-            let reader = new FileReader();
-            reader.onload = function(e){
-                $("#show_image").attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    };
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $("#photo").change(function(e){
+                    var reader = new FileReader();
+                    reader.onload = function(e){
+                        $("#show_image").attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(e.target.files['0'])
+                });
+            });
 
-</script>
+    </script>
 @endsection
