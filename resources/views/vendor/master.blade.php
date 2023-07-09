@@ -13,7 +13,7 @@
     <!--end header -->
     <!--start page wrapper -->
     <div class="page-wrapper">
-		@yield('main-content')
+		  @yield('main-content')
     </div>
     <!--end page wrapper -->
     @include('vendor.body.footer')

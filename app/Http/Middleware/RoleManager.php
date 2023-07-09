@@ -23,7 +23,7 @@ class RoleManager
         */
         
         if ($request->user()->role !== $role) {
-            return redirect('dashboard');
+            return redirect('user.index');
         } 
         
         return $next($request);

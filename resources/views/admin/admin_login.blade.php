@@ -47,9 +47,8 @@
                                         @csrf
                                             <!-- email  -->
                                             <div class="col-12">
-                                                <label for="email" class="form-label">Email Address</label>
-                                                <input type="email" class="form-control" id="email" name="email"
-                                                    placeholder="Email Address">
+                                                <label for="login" class="form-label">Email Address</label>
+                                                <input type="login" class="form-control" id="login" name="login" placeholder="Email Address">
                                             </div>
 
                                             <!-- password  -->
@@ -83,8 +82,7 @@
                                             <!-- button  -->
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary"><i
-                                                            class="bx bxs-lock-open"></i>Sign in</button>
+                                                    <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
                                                 </div>
                                             </div>
                                         </form>

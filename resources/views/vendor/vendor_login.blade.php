@@ -45,10 +45,16 @@
                                         <form method="POST" class="row g-3" action="{{ route('login') }}">
                                             @csrf
                                             <!-- email  -->
-                                            <div class="col-12">
+                                            <!-- <div class="col-12">
                                                 <label for="email" class="form-label">Email Address</label>
                                                 <input type="email" class="form-control" id="email" name="email"
                                                     placeholder="Email Address">
+                                            </div> -->
+
+                                            <!-- username  -->
+                                            <div class="col-12">
+                                                <label for="login" class="form-label">Username</label>
+                                                <input type="username" class="form-control" id="login" name="login" placeholder="Username">
                                             </div>
 
                                             <!-- password  -->
