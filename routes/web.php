@@ -6,16 +6,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Backend\BrandController;
 
 
 // Route::get('/', function () {
     //     return view('user.index');
     // });
-Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
-    
-    
+// Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->middleware(['auth', 'verified'])->name('dashboard');
+
     
 // admin login no varify required 
 Route::controller(AdminController::class)->group(function(){
@@ -40,6 +40,18 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     });
     
 });
+
+// Brand 
+Route::middleware(['auth', 'role:admin'])->group(function(){
+    
+    Route::controller(BrandController::class)->group(function(){
+        Route::get('/brand/all', 'index')->name('brand.all');
+        Route::get('/brand/add', 'create')->name('brand.add');
+        Route::post('/brand/store', 'store')->name('brand.store');
+    });
+    
+});
+
 
 // vendor login no varify required 
 Route::controller(VendorController::class)->group(function(){
@@ -70,6 +82,8 @@ Route::middleware(['auth', 'role:vendor'])->group(function(){
 Route::controller(UserController::class)->group(function(){
     Route::get('/', 'index')->name('user.home');
     Route::get('/user/login', 'user_login')->name('user.login');
+    Route::get('/user/register', 'user_register')->name('user.register');
+    Route::post('/user/new', 'user_add')->name('user.add');
 });
 
 
@@ -78,14 +92,13 @@ Route::middleware(['auth', 'role:user'])->group(function(){
     
     Route::controller(UserController::class)->group(function(){
         Route::get('/user/dashboard', 'user_dashboard')->name('user.dashboard');     
+        Route::post('/user/update', 'user_update')->name('user.update');  
+           
         Route::get('/user/logout', 'user_logout')->name('user.logout');
-
 
     });
     
 });
-
-
 
 
 Route::middleware('auth')->group(function () {
@@ -93,5 +106,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

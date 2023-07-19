@@ -21,35 +21,27 @@
 
  </script>
  <script src="{{asset('backend/admin')}}/assets/js/index.js"></script>
+ <script src="{{asset('backend/admin')}}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="{{asset('backend/admin')}}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+	<script>
+		$(document).ready(function() {
+			var table = $('#example2').DataTable( {
+				lengthChange: false,
+				buttons: [ 'copy', 'excel', 'pdf', 'print']
+			} );
+		 
+			table.buttons().container()
+				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+		} );
+	</script>
  <!--app JS-->
  <script src="{{asset('backend/admin')}}/assets/js/app.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"
-     integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
-     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script>
-     @if(Session::has('message'))
-     var type = "{{ Session::get('alert-type', 'message') }}";
-     switch (type) {
-         case 'info':
-             toastr.info("{{ Session::get('message') }}");
-             break;
 
-         case 'success':
-             toastr.success("{{ Session::get('message') }}");
-             break;
-
-         case 'warning':
-             toastr.warning("{{ Session::get('message') }}");
-             break;
-         case 'error':
-
-             toastr.error("{{ Session::get('message') }}");
-             break;
-
-     }
-     @endif
-
- </script>
  </body>
 
  </html>
